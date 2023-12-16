@@ -1,0 +1,74 @@
+.colorPalette {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-group div {
+  display: flex !important;
+  align-items: center;
+  padding: 15px;
+}
+
+.form-group div label {
+  margin-right: 10px;
+}
+.submitBtn {
+  align-items: center;
+  width: 200px;
+  justify-content: center !important;
+  margin: 0 auto;
+}
+
+button {
+  background-color: #63156f;
+  border: none;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 5px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  cursor: pointer;
+}
+
+button:disabled,
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.info {
+  text-align: center;
+}
+
+h1 {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  height: 72px;
+  align-items: center;
+  display: flex;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: #959595;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.warning{
+    font-weight: bold;
+    color: #ff9966;
+}

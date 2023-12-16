@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="colorPalette">
+        <div class="row">
+            <h1>Add New Color Group</h1>
+        </div>
+        <div class="row">
+            <h2><span class="warning">Note:</span> Please fill in the palette name and code to proceed with the submission.</h2>
+        </div>
+        <form [formGroup]="colorGroupForm" (ngSubmit)="addNewColorGroup()">
+            <div class="form-group" formArrayName="colorGroups">
+                <div *ngFor="let colorGroup of colorGroups.controls; let i = index">
+                    <div>
+                        <label>Name:</label>
+                        <input class="form-control" type="text" [formControl]="getColorGroupNameControl(i)" required
+                            placeholder="Color Name">
+                    </div>
+                    <div>
+                        <label>Code:</label>
+                        <input class="form-control" type="text" [formControl]="getColorGroupCodeControl(i)" required
+                            placeholder="Color Code Ex. #FFFFFF">
+                    </div>
+                </div>
+            </div>
+            <div class="row submitBtn">
+                <button [disabled]="!colorGroupForm.valid" type="submit">Add Color Group</button>
+            </div>
+        </form>
+    </div>
+</div>

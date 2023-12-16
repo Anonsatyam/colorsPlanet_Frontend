@@ -1,0 +1,120 @@
+.logo {
+  height: 90px;
+  width: 90px;
+}
+
+.searchBar {
+  border: 2px solid #f2f2f2;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: #f2f2f2;
+  max-width: 100%;
+  margin: 0;
+  height: 65px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: fixed;
+  z-index: 300;
+  top: 0 !important;
+}
+
+.searchBar input {
+  width: 200px;
+  background: transparent !important;
+  border-radius: 40px;
+  border: none !important;
+  font: 14px;
+}
+
+.searchBar .row {
+  margin: 0;
+  width: 100%;
+}
+
+.searchBar .row .col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.searchColorIcon {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.form-group {
+  border: 2px solid #ececec;
+  background-color: #f2f2f2;
+  border-radius: 40px;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+.adminAreaButton {
+  background-color: #63156f;
+  border: none;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 5px;
+  margin-left: 20px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminAreaButton img {
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+}
+
+.login,
+.admin {
+  margin-left: 5px;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 50em;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg)
+    no-repeat 50% 50%;
+  background-size: contain;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button {
+  opacity: 0.3;
+  pointer-events: all;
+}
+
+input[type="search"].dark::-webkit-search-cancel-button {
+  filter: invert(1);
+}
+
+@media only screen and (max-width: 600px) {
+  .searchBar input {
+    width: 150px;
+    background: transparent !important;
+    border-radius: 40px;
+    border: none !important;
+    font: 14px;
+  }
+
+  .logo {
+    height: 55px;
+    width: 55px;
+  }
+}

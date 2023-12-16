@@ -1,0 +1,66 @@
+<div *ngIf="loadingData">
+    <div class="loadingData">
+        <div class="dash one"></div>
+        <div class="dash two"></div>
+        <div class="dash three"></div>
+        <div class="dash four"></div>
+    </div>
+    <h1 class="text-center dataIsLoading">Data is loading</h1>
+</div>
+
+
+<div class="container justify-content-center" *ngIf="!dataFromSearch; else searchedData">
+    <div class="row heading-for-palettes" *ngIf="!loadingData && colors.length > 0">
+        <h1>Exquisite and Inspiring Color Palettes of the Moment.</h1>
+        <h2>Instantly access thousands of stunning color palettes with just one click.</h2>
+    </div>
+
+
+    <div class="row mainRow justify-content-center" *ngFor="let colorGroup of colors" [ngClass]="searchedData ? 'topMargin' : 'noTopMargin'">
+        <div id="main">
+            <div class="col-3 colorColumn" *ngFor="let color of colorGroup" [style.backgroundColor]="color.code"
+                (click)="copyColorCode(color.code)">
+                <p>Click To Copy😊</p>
+            </div>
+            <!-- Commenting Edit and Delete Option For now, will enable it once auth base role implemented -->
+
+
+            <!-- <div class="button-container" style="display: flex; justify-content: center;">
+
+                <button (click)="deleteGroup(colorGroup)">
+                    <img class="delete" src="../../assets/homepage/delete.png" alt="delete">
+                </button>
+                <button>
+                    <img class="edit" src="../../assets/homepage/edit.png" alt="edit">
+                </button>
+            </div> -->
+        </div>
+    </div>
+
+
+</div>
+<div class="row buttonRow" *ngIf="!hideLoadButton && !dataFromSearch && !loadingData">
+    <button class="genericButton loadMore" (click)="loadColorData()">
+        Load More
+        <img class="loadMore" src="../../assets/homepage/load_more.png" alt="loadMore">
+    </button>
+</div>
+
+
+
+<ng-template #searchedData>
+    <div class="container">
+        <div class="row mainRow" *ngFor="let colorGroup of searchResults">
+            <div id="main">
+                <div class="col-3 colorColumn" [style.backgroundColor]="color.code" *ngFor="let color of colorGroup"
+                    (click)="copyColorCode(color.code)">
+                    <p>{{color.name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="noColorFound" *ngIf="searchResults.length <= 0">
+        <img src="../../assets/logo/oops.png" alt="">
+        <h1>No color match for your search.</h1>
+    </div>
+</ng-template>

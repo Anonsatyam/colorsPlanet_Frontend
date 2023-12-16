@@ -1,0 +1,61 @@
+<div *ngIf="loadingData">
+    <div class="loadingData">
+        <div class="dash one"></div>
+        <div class="dash two"></div>
+        <div class="dash three"></div>
+        <div class="dash four"></div>
+    </div>
+    <h1 class="text-center dataIsLoading">Data is loading</h1>
+</div>
+
+<div class="container solid_container justify-content-center" *ngIf="!dataFromSearch; else searchedData">
+    <div class="row heading-for-palettes" *ngIf="!loadingData && colorsData.length > 0">
+        <h1>Explore Captivating Color Combinations for Solid Colors.</h1>
+        <h2> Unveil the Essence of Color Harmony.</h2>
+    </div>
+
+
+    <div class="row mainRow justify-content-center" *ngFor="let color of colors">
+        <div id="main">
+            <div class="col-3 colorColumn" [style.backgroundColor]="color.code" (click)="copyColorCode(color.code)">
+                <p>Click To Copy✌️</p>
+            </div>
+            <!-- <div class="button-container" style="display: flex; justify-content: center;">
+
+                <button (click)="deleteGroup(colorGroup)">
+                    <img class="delete" src="../../assets/homepage/delete.png" alt="delete">
+                </button>
+                <button>
+                    <img class="edit" src="../../assets/homepage/edit.png" alt="edit">
+                </button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<div class="container justify-content-center">
+    <div class="row buttonRow" *ngIf="!hideLoadButton && !dataFromSearch && !loadingData">
+        <button class="genericButton loadMore" (click)="loadColorData()">
+            Load More
+            <!-- <img class="loadMore_img" src="../../assets/homepage/load_more.png" alt="loadMore"> -->
+        </button>
+    </div>
+</div>
+
+
+<ng-template #searchedData>
+    <div class="container solid_container">
+        <div class="row mainRow">
+            <div id="main" class="justify-content-center">
+                <div class="col-3 colorColumn" [style.backgroundColor]="color.value" *ngFor="let color of searchResults"
+                    (click)="copyColorCode(color.value)">
+                    <p>Click To Copy✌️</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="noColorFound" *ngIf="searchResults.length <= 0">
+        <img src="../../assets/logo/oops.png" alt="">
+        <h1>No color match for your search.</h1>
+    </div>
+</ng-template>

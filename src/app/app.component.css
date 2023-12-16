@@ -1,0 +1,39 @@
+.main {
+  width: 100%;
+  position: absolute;
+}
+
+.sidenav-list-open {
+  width: 200px;
+  transition: width 0.3s;
+}
+
+@media only screen and (min-width: 600px) {
+  .display-area {
+    position: absolute;
+    left: 60px;
+    width: calc(100% - 60px);
+    transition: left 300ms ease-in, width 300ms ease-in;
+  }
+
+  .display-area-shrink {
+    width: calc(100% - 250px);
+    left: 250px;
+  }
+
+  app-sidenav {
+    position: fixed;
+    left: 0px;
+    width: 60px;
+    transition: width 0.3s;
+    top: 65px;
+    border-top: 1px solid white;
+    height: calc(100vh - 65px);
+    /* background-color: rgba(34, 34, 34, 1); */
+    background-color: #63156f;
+    box-shadow: 0 0 10 rgba(0, 0, 0, 0.5);
+    transition: width 300ms ease-in;
+  }
+}
+
+

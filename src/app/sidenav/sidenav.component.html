@@ -1,0 +1,32 @@
+<div class="side-nav-content">
+    <ul class="nav-list" [ngClass]="{'nav-list-open':menuStatus}">
+        <li class="nav-list-item" style="color: #ffffff;" [routerLink]="''">
+            <img class="sidenavIcons" src="../../assets/sidenavIcons/color-palette.png" alt="">
+            <span><a>Color Palette</a></span>
+        </li>
+
+        <li class="nav-list-item" style="color: #ffffff;" [routerLink]="'solidColors'">
+            <img class="sidenavIcons" src="../../assets/sidenavIcons/solid-colors.png" alt="">
+            <span><a>Solid Colors</a></span>
+        </li>
+
+        <li class="nav-list-item" style="color: #ffffff;" [routerLink]="'gradientColors'">
+            <img class="sidenavIcons" src="../../assets/sidenavIcons/gradient.png" alt="">
+            <span><a>Gradients</a></span>
+        </li>
+
+        <li class="nav-list-item" style="color: #ffffff;">
+            <img class="sidenavIcons" src="../../assets/sidenavIcons/brand.png" alt="">
+            <span><a href="#">Brand Colors</a></span>
+        </li>
+
+        <li  *ngIf="menuStatus" class="nav-list-item close" style="color: #ffffff;" (click)="sidenavToggle()">
+            <img [@inOutAnimation] class="sidenavIcons" src="../../assets/sidenavIcons/collapse.png" alt="">
+            <span><a>Close Sidenav</a></span>
+        </li>
+        <li *ngIf="!menuStatus" [ngClass]="{'hideToggleButton': !isScreenLarge}" class="nav-list-item open" style="color: #ffffff;" (click)="sidenavToggle()">
+            <img [@inOutAnimation] class="sidenavIcons" src="../../assets/sidenavIcons/expand.png" alt="">
+            <span><a>Open Sidenav</a></span>
+        </li>
+    </ul>
+</div>

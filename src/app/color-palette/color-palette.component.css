@@ -1,0 +1,207 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;500&display=swap"); */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 65px;
+}
+
+.heading-for-palettes {
+  width: 100%;
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: -0.114286px;
+  padding: 7.5px;
+  color: #404040;
+  margin: 40px 0 20px 0;
+}
+
+.heading-for-palettes h1 {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+
+.heading-for-palettes h2 {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: #959595;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.colorColumn {
+  color: #ffffff;
+  font-weight: 500;
+  justify-content: center;
+  align-items: end;
+  display: flex;
+  height: 84px;
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 6.76509px 6.76509px 6.76509px 6.76509px;
+}
+
+
+#main div:not(:last-child):hover {
+  animation-name: shake;
+  animation-duration: 0.8s;
+  animation-iteration-count: 0.5s;
+  animation-timing-function: linear;
+  transform-origin: 50% 100%;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(2px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-2deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(3deg);
+  }
+  30% {
+    transform: translate(0px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
+
+#main div:nth-child(1) {
+  z-index: 4;
+  margin-top: 4px;
+  position: relative;
+}
+
+#main div:nth-child(2) {
+  z-index: 3;
+  margin-top: -41px;
+  position: relative;
+}
+
+#main div:nth-child(3) {
+  z-index: 2;
+  margin-top: -41px;
+  position: relative;
+}
+
+#main div:nth-child(4) {
+  z-index: 1;
+  margin-top: -41px;
+  position: relative;
+}
+
+.mainRow {
+  padding: 20px;
+  margin: 20px;
+  background: #fff;
+  box-shadow: 0 6px 26px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.colorColumn p {
+  display: none;
+}
+
+.colorColumn:first-child:hover p {
+  display: unset;
+  transition: 0.3s;
+  display: flex;
+}
+
+.colorColumn:not(:first-child):hover p {
+  display: unset;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  position: absolute;
+  bottom: -2px;
+}
+
+.buttonRow {
+  margin: 20px auto;
+  justify-content: center;
+}
+
+.loadMore {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+}
+
+.button-container button {
+  border: none !important;
+  background: transparent;
+  margin: 10px 5px;
+}
+
+.edit,
+.delete {
+  height: 25px;
+  width: 25px;
+  cursor: not-allowed;
+}
+
+.blue-snackbar {
+  background: #2196f3;
+}
+.green-snackbar {
+  background: #1de9b6;
+}
+.red-snackbar {
+  background: #b00020;
+}
+
+.loadMore {
+  width: 132px !important;
+  height: 40px;
+}
+
+.loadMore img {
+  height: 25px !important;
+  width: 25px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .mainRow {
+    margin: 15px auto !important;
+  }
+
+  .heading-for-palettes h1 {
+    font-size: 16px;
+  }
+
+  .heading-for-palettes h2 {
+    font-size: 10px;
+  }
+
+  /* .loadMore {
+    margin-bottom: 20px;
+  } */
+
+  .noTopMargin {
+    margin-top: 0 !important;
+  }
+
+  .heading-for-palettes {
+    margin-top: 65px;
+  }
+
+  .dataIsLoading {
+    font-size: 20px;
+  }
+
+  .dash {
+    width: 25px;
+  }
+
+  .topMargin {
+    margin-top: 65px !important;
+  }
+}

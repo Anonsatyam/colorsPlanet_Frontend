@@ -1,0 +1,10 @@
+<div class="container-fluid g-0">
+    <app-top-nav></app-top-nav>
+
+    <main>
+        <app-sidenav [class.hidden-content]="!isScreenSizeLarge" (sidenavEvent)="receivedSidenavEvent($event)" class="black-border" [ngClass]="{'sidenav-list-open':receivedEvent}"></app-sidenav>
+        <div class="display-area" [ngClass]="{'display-area-shrink':receivedEvent}">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

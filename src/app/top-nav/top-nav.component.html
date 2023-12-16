@@ -1,0 +1,25 @@
+<div class="container searchBar">
+    <div class="row">
+        <div class="col">
+            <img class="logo" src="../../assets/logo/logo.png"  alt="">
+        </div>
+        <div class="col justify-content-end">
+            <form [formGroup]="SignupForm">
+                <div class="form-group d-flex align-items-center">
+                    <input type="search" class="form-control" id="username" (input)="onSearch($event)" 
+                    placeholder="Type color name/hex..."
+                    formControlName="username">
+                    <img class="searchColorIcon" src="../../assets/sidenavIcons/search.png" alt="">
+                </div>
+            </form>
+            <!-- <button class="adminAreaButton" [routerLink]="'/login'">
+                <span>Login</span>
+                <img class="login" src="../../assets/topnavicons/login.png" alt="login">
+            </button> -->
+            <button *ngIf="data" class="adminAreaButton" [routerLink]="'/adminPanel'">
+                <span>Admin</span>
+                <img class="admin" src="../../assets/topnavicons/admin.png" alt="admin">
+            </button>
+        </div>
+    </div>
+</div>

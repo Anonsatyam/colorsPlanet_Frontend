@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="registerForm">
+    <div class="row">
+      <h1>User Registration</h1>
+    </div>
+    <form [formGroup]="regestrationForm" (ngSubmit)="register()">
+      <div class="container mt-100">
+        <label>Email:</label>
+        <input class="form-control" formControlName="email" type="email" required />
+      </div>
+      <div>
+        <label>Name:</label>
+        <input class="form-control" type="text" formControlName="name" required />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input class="form-control" type="password" formControlName="password" required />
+      </div>
+      <div class="row submitBtn">
+        <button type="submit">Register User</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="registrationError" class="error">{{ registrationError }}</div>
+
+</div>

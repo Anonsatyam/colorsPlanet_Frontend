@@ -1,0 +1,12 @@
+<div class="container solid_container justify-content-center">
+    <div class="row mainRow justify-content-center" *ngFor="let code of gradientColorsData">
+        <div id="main">
+            <div class="gradientNAme colorColumn" [style.background]="code.code"
+                style="cursor: pointer;height: 200px; width: 200px; border-radius: 3px; margin-bottom: 0px !important;">
+                <p>
+                    Click To Copy😊
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

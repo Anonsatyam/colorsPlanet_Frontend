@@ -1,0 +1,31 @@
+.container {
+  margin-top: 100px;
+}
+
+.diffrentImages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.diffrentImages img {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.diffrentImages button {
+    background-color: #63156f;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 5px;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+}
