@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'https://aware-shirt-lamb.cyclic.app'; // Replace this with your backend API URL
+  private apiUrl = 'https://gifted-pants-boa.cyclic.app/'; // Replace this with your backend API URL
 
   constructor(private http: HttpClient) { }
 

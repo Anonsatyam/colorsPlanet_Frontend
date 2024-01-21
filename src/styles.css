@@ -22,18 +22,18 @@ body {
 }
 
 .green-snackbar button {
-  background-color: #63156F;
+  background-color: #0d1117;
   color: white;
   border: 1px solid #ffffff;
 }
 
 .green-snackbar {
-  --mdc-snackbar-container-color: #63156F;
+  --mdc-snackbar-container-color: #0d1117;
   --mat-mdc-snack-bar-button-color: white;
 }
 
 .genericButton{
-  background-color: #63156f;
+  background-color: #0d1117;
   border: none;
   border-radius: 3px;
   color: #ffffff;

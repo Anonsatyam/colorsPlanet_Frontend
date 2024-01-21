@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GradientColorService {
-  api = 'https://aware-shirt-lamb.cyclic.app/gradientColors';
+  api = 'https://gifted-pants-boa.cyclic.app/gradientColors';
 
   constructor(private http: HttpClient) {}
 

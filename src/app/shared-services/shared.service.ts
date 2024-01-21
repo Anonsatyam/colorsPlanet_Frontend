@@ -11,7 +11,7 @@ export class SharedService {
   private sharedSizeSubject = new Subject<any>();
   dataFromSearch$ = this.sharedDataSubject.asObservable();
   userLoginStatus = this.sharedStatusSubject.asObservable();
-  private apiUrl = 'https://aware-shirt-lamb.cyclic.app/api/colorGroups';
+  private apiUrl = 'https://gifted-pants-boa.cyclic.app/api/colorGroups';
 
 
   constructor(private http: HttpClient) { }
