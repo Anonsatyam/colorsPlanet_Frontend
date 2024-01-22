@@ -16,12 +16,18 @@
     </div>
 
 
-    <div class="row mainRow justify-content-center" *ngFor="let colorGroup of colors" [ngClass]="searchedData ? 'topMargin' : 'noTopMargin'">
+    <div class="row mainRow justify-content-center" *ngFor="let colorGroup of getFormattedColors(colorData)"
+        [ngClass]="searchedData ? 'topMargin' : 'noTopMargin'">
         <div id="main">
             <div class="col-3 colorColumn" *ngFor="let color of colorGroup" [style.backgroundColor]="color.code"
                 (click)="copyColorCode(color.code)">
                 <p>Click To Copy😊</p>
             </div>
+            <p
+                style="text-align: center; margin: 10px auto;   font-weight: 500; font-size: 13px; color: #959595; font-family: Noto Sans, sans-serif;">
+                Last Updated: {{colorGroup[0].formattedDate}} ago
+            </p>
+
             <!-- Commenting Edit and Delete Option For now, will enable it once auth base role implemented -->
 
 

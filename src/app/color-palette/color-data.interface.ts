@@ -3,6 +3,7 @@
 export interface ColorGroup {
     name: string;
     code: string;
+    _id: string
   }
   
   export interface ColorData {

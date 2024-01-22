@@ -5,6 +5,7 @@ import { ClipboardService } from 'ngx-clipboard';
 import { SharedService } from '../shared-services/shared.service';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import ObjectId from 'bson-objectid';
 
 @Component({
   selector: 'app-color-palette',
@@ -56,15 +57,14 @@ export class ColorPaletteComponent implements OnInit {
     });
   }
 
-	openSnackBar(message: string) {
-
-    this.snackBar.open(message, "Ok", {
-     duration: 30000,
-     verticalPosition: 'top',
-     horizontalPosition: 'center',
-     panelClass: ['green-snackbar', 'login-snackbar'],
-   });
-}
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'Ok', {
+      duration: 30000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['green-snackbar', 'login-snackbar'],
+    });
+  }
 
   ngOnInit() {
     this.fetchColorPalletes();
@@ -74,9 +74,53 @@ export class ColorPaletteComponent implements OnInit {
     this.loadingData = true;
     this.service.getData().subscribe((data) => {
       this.colorData = data[0].colorGroups;
+      this.getFormattedColors(this.colorData);
       this.loadColorData();
       this.loadingData = false;
     });
+  }
+
+  getFormattedColors(colorData: ColorGroup[][]) {
+    const currentDate = new Date();
+
+    const formattedColors = colorData.map((colorGroupArray) => {
+      return colorGroupArray.map((colorGroup) => {
+        const formattedDate = this.getMonthsDifference(
+          colorGroup._id,
+          currentDate
+        );
+        return {
+          name: colorGroup.name,
+          code: colorGroup.code,
+          formattedDate: formattedDate,
+        };
+      });
+    });
+
+    return formattedColors;
+  }
+
+  getMonthsDifference(objectId: string, currentDate: Date): string {
+    const timestamp = parseInt(objectId.substring(0, 8), 16) * 1000;
+
+    const inputDate = new Date(timestamp);
+
+    const timeDifference = currentDate.getTime() - inputDate.getTime();
+    const monthsDifference = Math.floor(
+      timeDifference / (1000 * 60 * 60 * 24 * 30.44)
+    ); // Average days in a month
+
+    if (monthsDifference === 1) {
+      return '1 month';
+    } else {
+      return `${monthsDifference} months`;
+    }
+  }
+
+  formatDate(objectId: string): string {
+    const timestamp = parseInt(objectId.substring(0, 8), 16);
+    const dateObject = new Date(timestamp * 1000);
+    return dateObject.toISOString();
   }
 
   loadColorData() {
@@ -86,14 +130,11 @@ export class ColorPaletteComponent implements OnInit {
     if (this.colors.length === this.colorData.length) {
       this.hideLoadButton = true;
     }
-    
   }
 
   deleteGroup(group: Array<{ _id: any }>) {
     // this.loadingData = true;
-
     // const idsToDelete = group.map((element) => element._id);
-
     // this.sharedService.deleteColorById(idsToDelete).subscribe(
     //   (data:any) => {
     //     this.loadingData = false;
