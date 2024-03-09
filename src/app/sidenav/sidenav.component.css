@@ -1,5 +1,5 @@
 .side-nav-content {
-  width: 180px;
+  width: 140px;
   margin: 10px 10px 0 10px;
   position: fixed;
 }
@@ -20,8 +20,12 @@
 }
 
 .nav-list-item:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--primary-color);
   border-radius: 10px;
+}
+
+.nav-list-item:hover a {
+  color: var(--sidebar-color);
 }
 
 .sidenavIcons {
@@ -33,21 +37,33 @@
 }
 
 .nav-list-item span {
-  width: 170px;
+  width: 100px;
   text-transform: capitalize;
 }
 
 a {
   text-decoration: none;
-  color: #ffffff;
-  font-weight: 600;
-  font-family: "Noto Sans", sans-serif;
+  /* font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 1; */
+  color: var(--text-color);
+  font-family: "Poppins SemiBold", sans-serif !important;
 }
 
 .close,
 .open {
   bottom: 65px;
   position: absolute;
+}
+
+.close {
+  font-size: 12px;
+}
+
+.close img {
+  height: 20px;
+  width: 20px;
 }
 
 .nav-list-open {

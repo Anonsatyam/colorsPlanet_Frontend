@@ -3,26 +3,28 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 65px;
+  background-color: var(--body-color);
 }
 
 .heading-for-palettes {
   width: 100%;
-  font-size: 30px;
   line-height: 40px;
   letter-spacing: -0.114286px;
-  padding: 7.5px;
-  color: #0d1117;
   margin: 40px 0 20px 0;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 12px 60px;
 }
 
 .heading-for-palettes h1 {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Poppins SemiBold";
   font-weight: 700;
+  font-size: 26px;
 }
 
 .heading-for-palettes h2 {
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 16px;
   color: #959595;
   font-family: "Noto Sans", sans-serif;

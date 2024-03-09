@@ -6,6 +6,14 @@ body {
 }
 body {
   margin: 0;
+  
+}
+:root {
+  --sidebar-color: #fff;
+  --primary-color: #695cfe;
+  --text-color: #707070;
+  --primary-color-light: #f6f5ff;
+  --body-color: #E4E9F7;
 }
 
 @font-face {
@@ -13,7 +21,23 @@ body {
   font-style: medium;
   font-weight: 500;
   src: local("NotoSans Medium"), local("NotoSans-Medium"),
-    url(/color/src/assets/fonts/Noto_Sans/NotoSans-Medium.ttf) format("ttf");
+    url(./assets/fonts/Noto_Sans/NotoSans-Medium.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: "Roboto Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Roboto Medium"), local("Roboto-Medium"),
+    url(./assets/fonts/Roboto/Roboto-Medium.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: "Poppins SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Poppins SemiBold"), local("Poppins-SemiBold"),
+    url(./assets/fonts/Poppins/Poppins-SemiBold.ttf) format("truetype");
 }
 
 ::ng-deep .green-snackbar {
@@ -32,7 +56,7 @@ body {
   --mat-mdc-snack-bar-button-color: white;
 }
 
-.genericButton{
+.genericButton {
   background-color: #0d1117;
   border: none;
   border-radius: 3px;

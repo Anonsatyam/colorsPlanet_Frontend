@@ -14,11 +14,15 @@
     left: 60px;
     width: calc(100% - 60px);
     transition: left 300ms ease-in, width 300ms ease-in;
+    background-color: var(--body-color);
+    height: 100vh;
   }
 
   .display-area-shrink {
-    width: calc(100% - 250px);
-    left: 250px;
+    width: calc(100% - 200px);
+    left: 200px;
+    background-color: var(--body-color);
+    height: 100vh;
   }
 
   app-sidenav {
@@ -30,10 +34,8 @@
     border-top: 1px solid white;
     height: calc(100vh - 65px);
     /* background-color: rgba(34, 34, 34, 1); */
-    background-color: #0d1117;
-    box-shadow: 0 0 10 rgba(0, 0, 0, 0.5);
+    background: var(--sidebar-color);
+    /* box-shadow: 0 0 10 rgba(0, 0, 0, 0.5); */
     transition: width 300ms ease-in;
   }
 }
-
-
