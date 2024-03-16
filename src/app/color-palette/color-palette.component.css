@@ -6,6 +6,10 @@
   background-color: var(--body-color);
 }
 
+.mainContainer {
+  max-width: 100% !important;
+}
+
 .heading-for-palettes {
   width: 100%;
   line-height: 40px;
@@ -44,7 +48,6 @@
   padding: 20px;
   border-radius: 6.76509px 6.76509px 6.76509px 6.76509px;
 }
-
 
 #main div:not(:last-child):hover {
   animation-name: shake;
@@ -127,7 +130,8 @@
 }
 
 .buttonRow {
-  margin: 20px auto;
+  margin: 0px auto 10px auto;
+  background-color: var(--body-color);
   justify-content: center;
 }
 

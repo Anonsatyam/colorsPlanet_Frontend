@@ -9,6 +9,7 @@
                     <input type="search" class="form-control" id="username" (input)="onSearch($event)" 
                     placeholder="Type color name/hex..."
                     formControlName="username">
+                    <div pseudo="-webkit-search-cancel-button" id="search-clear" style="" (click)="clearSearch()"></div>
                     <img class="searchColorIcon" src="../../assets/sidenavIcons/search.png" alt="">
                 </div>
             </form>

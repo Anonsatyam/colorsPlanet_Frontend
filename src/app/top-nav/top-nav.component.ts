@@ -27,4 +27,8 @@ export class TopNavComponent implements OnInit {
   onSearch(event: any) {
     this.sharedService.setData(this.SignupForm.value.username);
   }
+
+  clearSearch() {
+    this.sharedService.setData(''); // Set the value of the FormControl to empty
+  }
 }

@@ -9,14 +9,14 @@
 </div>
 
 
-<div class="container justify-content-center" *ngIf="!dataFromSearch; else searchedData">
+<div class="container mainContainer justify-content-center" *ngIf="!dataFromSearch; else searchedData">
     <div class="row heading-for-palettes" *ngIf="!loadingData && colors.length > 0">
         <h1>Exquisite and Inspiring Color Palettes of the Moment.</h1>
         <h2>Instantly access thousands of stunning color palettes with just one click.</h2>
     </div>
 
 
-    <div class="row mainRow justify-content-center" *ngFor="let colorGroup of getFormattedColors(colorData)"
+    <div class="row mainRow justify-content-center" *ngFor="let colorGroup of getFormattedColors(colors)"
         [ngClass]="searchedData ? 'topMargin' : 'noTopMargin'">
         <div id="main">
             <div class="col-3 colorColumn" *ngFor="let color of colorGroup" [style.backgroundColor]="color.code"
