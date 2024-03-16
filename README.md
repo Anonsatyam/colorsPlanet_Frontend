@@ -14,7 +14,7 @@ To run the ColorsPlanet Frontend locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/colorsPlanet_Frontend.git
+   git clone https://github.com/Anonsatyam/colorsPlanet_Frontend.git
    
 2. Navigate to the project directory:
    ```bash
@@ -35,8 +35,8 @@ The frontend interacts with a backend server running on Node.js and Express.js. 
 
 ## Usage
 &middot; Navigate through different color sections using the navigation menu.
-&middot; Click on a color to copy its hex code to your clipboard.
-&middot; Paste the color code into your project's code editor or design tool for use.
+<br>&middot; Click on a color to copy its hex code to your clipboard.
+<br>&middot; Paste the color code into your project's code editor or design tool for use.
 
 ## Contributing
 Contributions to ColorsPlanet Frontend are welcome! If you have ideas, bug reports, or feature requests, please open an issue or submit a pull request.
