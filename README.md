@@ -42,5 +42,4 @@ The frontend interacts with a backend server running on Node.js and Express.js. 
 Contributions to ColorsPlanet Frontend are welcome! If you have ideas, bug reports, or feature requests, please open an issue or submit a pull request.
 
 ## License
-This project is licensed under the [MIT License][mit-link].
-[mit-link]:https://opensource.org/license/mit
+This project is licensed under the [MIT License](https://opensource.org/license/mit)
