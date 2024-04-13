@@ -1,5 +1,6 @@
 .side-nav-content {
-  width: 140px;
+  /* Here Width Creating Problem In Sidenav Shrink */
+  /* width: 140px; */ 
   margin: 10px 10px 0 10px;
   position: fixed;
 }

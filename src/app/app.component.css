@@ -13,7 +13,7 @@
     position: absolute;
     left: 60px;
     width: calc(100% - 60px);
-    transition: left 300ms ease-in, width 300ms ease-in;
+    transition: left 200ms ease-in, width 200ms ease-in;
     background-color: var(--body-color);
     height: 100vh;
   }

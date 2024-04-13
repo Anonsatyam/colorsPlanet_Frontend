@@ -18,14 +18,14 @@ import { SharedService } from '../shared-services/shared.service';
       transition(':enter', [
         style({ transform: 'rotate(0deg)', opacity: 0 }),
         animate(
-          '250ms ease-out',
+          '150ms ease-out',
           style({ transform: 'rotate(360deg)', opacity: 1 })
         ),
       ]),
       transition(':leave', [
         style({ transform: 'rotate(360deg)', opacity: 1 }),
         animate(
-          '250ms ease-in',
+          '3ms ease-in',
           style({ transform: 'rotate(0deg)', opacity: 0 })
         ),
       ]),
@@ -40,8 +40,6 @@ export class SidenavComponent {
   constructor(private router: Router, private sharedService: SharedService) {
     this.sharedService.getScreenSize().subscribe((data) => {
       this.isScreenLarge = data;
-      console.log(this.isScreenLarge);
-      
     });
   }
 

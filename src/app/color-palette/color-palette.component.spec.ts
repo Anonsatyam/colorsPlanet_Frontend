@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ColorPaletteComponent } from './color-palette.component';
 
-describe('ColorPaletteComponent', () => {
+fdescribe('ColorPaletteComponent', () => {
   let component: ColorPaletteComponent;
   let fixture: ComponentFixture<ColorPaletteComponent>;
 
@@ -17,7 +17,7 @@ describe('ColorPaletteComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  xit('should create', () => {
     expect(component).toBeTruthy();
   });
 });

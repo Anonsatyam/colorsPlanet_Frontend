@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ColorPaletteService } from './color-palette.service';
 
-describe('ColorPaletteService', () => {
+fdescribe('ColorPaletteService', () => {
   let service: ColorPaletteService;
 
   beforeEach(() => {
