@@ -13,7 +13,7 @@ module.exports = function (config) {
         clearContext: false // leave Jasmine Spec Runner output visible in browser
       },
       coverageReporter: {
-        dir: require('path').join(__dirname, './colorsPlanet_Frontend/coverage'),
+        dir: require('path').join(__dirname, './coverage/colorsPlanet_Frontend'),
         subdir: '.',
         reporters: [
           { type: 'html' },

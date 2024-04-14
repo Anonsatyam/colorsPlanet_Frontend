@@ -58,6 +58,8 @@ export class ColorPaletteComponent implements OnInit {
   fetchColorPalletes() {
     this.loadingData = true;
     this.service.getData().subscribe((data) => {
+      console.log(data);
+      
       this.colorData = data[0].colorGroups;
       this.getFormattedColors(this.colorData);
       this.loadColorData();
