@@ -24,7 +24,7 @@ export class AppComponent {
     this.checkScreenSize();
   }
 
-  private checkScreenSize(): void {
+  checkScreenSize(): void {
     const screenWidth = window.innerWidth;
     this.isScreenSizeLarge = screenWidth >= 768;
     this.service.sendScreenSize(this.isScreenSizeLarge);

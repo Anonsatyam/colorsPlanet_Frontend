@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ClipboardModule } from 'ngx-clipboard';
@@ -17,6 +17,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { SolidColorComponent } from './solid-color/solid-color.component';
 import { GradientColorComponent } from './gradient-color/gradient-color.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { GradientColorComponent } from './gradient-color/gradient-color.componen
     ClipboardModule,
     AppRoutingModule,
     HttpClientModule,
+    HttpClientTestingModule
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -43,6 +45,7 @@ import { GradientColorComponent } from './gradient-color/gradient-color.componen
     MatSnackBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
