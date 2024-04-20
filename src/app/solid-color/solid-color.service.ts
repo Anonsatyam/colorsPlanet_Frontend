@@ -9,7 +9,11 @@ import { Observable } from 'rxjs';
 export class SolidColorService {
   constructor(private http: HttpClient) {}
 
-  api = 'https://gifted-pants-boa.cyclic.app/solidColors';
+  //Comment this while development
+  // api = 'https://colorsplanet-backend.onrender.com/solidColors';
+
+  //Run backend server to use this url
+  private api = 'http://localhost:3000/solidColors';
 
   getSolidColorData(): Observable<SolidColorData[]> {
     return this.http.get<SolidColorData[]>(this.api);

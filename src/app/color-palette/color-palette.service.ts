@@ -7,9 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class ColorPaletteService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'https://gifted-pants-boa.cyclic.app/';
+  //Comment this while development
+  // private apiUrl = 'https://colorsplanet-backend.onrender.com/';
+
+  //Run backend server to use this url
+  private apiUrl = 'http://localhost:3000/';
+
   getData() {
     return this.http.get<any>(this.apiUrl);
   }
-
 }

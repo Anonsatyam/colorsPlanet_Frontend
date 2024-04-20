@@ -37,7 +37,6 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
     ClipboardModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientTestingModule
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

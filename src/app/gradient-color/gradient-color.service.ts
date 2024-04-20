@@ -7,7 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GradientColorService {
-  api = 'https://gifted-pants-boa.cyclic.app/gradientColors';
+  //Comment this while development
+  // api = 'https://colorsplanet-backend.onrender.com/gradientColors';
+
+    //Run backend server to use this url
+    private api = 'http://localhost:3000/gradientColors';
 
   constructor(private http: HttpClient) {}
 

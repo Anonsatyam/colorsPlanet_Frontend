@@ -3,7 +3,7 @@ import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
   private sharedDataSubject = new Subject<any>();
@@ -11,11 +11,14 @@ export class SharedService {
   private sharedSizeSubject = new Subject<any>();
   dataFromSearch$ = this.sharedDataSubject.asObservable();
   userLoginStatus = this.sharedStatusSubject.asObservable();
-  private apiUrl = 'https://gifted-pants-boa.cyclic.app/api/colorGroups';
 
+  //Comment this while development
+  // private apiUrl = 'https://colorsplanet-backend.onrender.com/api/colorGroups';
 
-  constructor(private http: HttpClient) { }
+    //Run backend server to use this url
+    private apiUrl = 'http://localhost:3000/api/colorGroups';
 
+  constructor(private http: HttpClient) {}
 
   setData(data: any) {
     this.sharedDataSubject.next(data);
@@ -33,7 +36,7 @@ export class SharedService {
     return this.http.post<any[]>(this.apiUrl, colorGroups);
   }
 
-  checkLoginOrNot(status: any){
+  checkLoginOrNot(status: any) {
     this.sharedStatusSubject.next(status);
   }
 
