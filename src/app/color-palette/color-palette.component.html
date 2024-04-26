@@ -23,14 +23,11 @@
                 (click)="copyColorCode(color.code)">
                 <p>Click To Copy😊</p>
             </div>
-            <p class="formattedDate">
-                Last Updated: {{colorGroup[0].formattedDate}} ago
-            </p>
         </div>
     </div>
 </div>
 
-<div class="row buttonRow" *ngIf="!hideLoadButton && !dataFromSearch && !loadingData">
+<div class="row buttonRow" *ngIf="!hideLoadButton && !dataFromSearch && !loadingData && !hideLoadMoreButton">
     <button class="genericButton loadMore" (click)="loadColorData()">
         Load More
         <img class="loadMore" src="../../assets/homepage/load_more.png" alt="loadMore">
@@ -38,14 +35,17 @@
 </div>
 
 <ng-template #searchedData>
-    <div class="container">
-        <div class="row mainRow" *ngFor="let colorGroup of searchResults | keyvalue">
-            <div class="col-3 colorColumn" [style.backgroundColor]="colorGroup.value"
-                (click)="copyColorCode(colorGroup.value)">
-                <p>Click To Copy😊</p>
+    <div class="container" *ngIf="searchResults.length">
+        <div class="row mainRow">
+            <div class="col-3 colorColumn" [style.backgroundColor]="colorGroup.name"
+                *ngFor="let colorGroup of searchResults">
+                <div (click)="copyColorCode(colorGroup.name)">
+                    <p>Click To Copy😊</p>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="noColorFound" *ngIf="searchResults.length <= 0">
         <img src="../../assets/logo/oops.png" alt="">
         <h1>No color match for your search.</h1>

@@ -7,6 +7,6 @@ export interface ColorGroup {
   }
   
   export interface ColorData {
-    colorGroups: ColorGroup[][];
+    colorGroups: ColorGroup[];
   }
   

@@ -7,7 +7,14 @@ import { Subscription, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import ObjectId from 'bson-objectid';
 import { from, Observable, of } from 'rxjs';
-import { map, mergeMap, toArray, takeUntil } from 'rxjs/operators';
+import {
+  map,
+  mergeMap,
+  toArray,
+  takeUntil,
+  catchError,
+  finalize,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-color-palette',
@@ -29,8 +36,9 @@ export class ColorPaletteComponent implements OnInit {
     'Fall In Love With This Color',
     'Pretty Good Choice',
   ];
-  pageSize = 12;
+  pageSize = 0;
   hideLoadButton: boolean = false;
+  hideLoadMoreButton: boolean = false;
 
   constructor(
     private service: ColorPaletteService,
@@ -40,21 +48,29 @@ export class ColorPaletteComponent implements OnInit {
   ) {
     this.subscription = this.sharedService.dataFromSearch$
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        this.dataFromSearch = data;
-        if (this.dataFromSearch.trim() === '') {
-          this.searchResults = [];
-        } else {
-          const index = this.colors.findIndex((colorGroup) =>
-            colorGroup.find(
-              (color: any) =>
-                color.name.toLowerCase() === this.dataFromSearch.toLowerCase()
-            )
-          );
+      .subscribe(
+        (data) => {
+          this.dataFromSearch = data;
+          if (this.dataFromSearch.trim() === '') {
+            this.searchResults = [];
+          } else {
+            console.log(this.colors);
 
-          this.searchResults = index !== -1 ? this.colors[index] : undefined;
+            this.searchResults = this.colors.filter(
+              (colorGroup) =>
+                colorGroup.name.toLowerCase() ===
+                this.dataFromSearch.toLowerCase()
+            );
+          }
+        },
+        (error) => {
+          this.snackBar.open(error.message, 'Ok', {
+            duration: 3000,
+            verticalPosition: 'top',
+            panelClass: ['green-snackbar'],
+          });
         }
-      });
+      );
   }
 
   ngOnInit() {
@@ -62,58 +78,60 @@ export class ColorPaletteComponent implements OnInit {
   }
 
   fetchColorPalletes() {
+    this.pageSize = 48; // Initial page size
     this.loadingData = true;
     this.service
       .getData()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        this.colorData = data[0].colorGroups;
-        this.getFormattedColors(this.colorData);
-        this.loadColorData();
-        this.loadingData = false;
-      });
+      .pipe(
+        takeUntil(this.destroy$),
+        catchError((error) => {
+          this.snackBar.open(error.message, 'Ok', {
+            duration: 3000,
+            verticalPosition: 'top',
+            panelClass: ['green-snackbar'],
+          });
+          this.hideLoadMoreButton = true;
+          return of(null);
+        }),
+        finalize(() => {
+          this.loadingData = false;
+        })
+      )
+      .subscribe(
+        (data) => {
+          if (data) {
+            this.colorData = data[0]?.colorGroups;
+            this.loadColorData();
+          }
+        },
+        (error) => {
+          this.hideLoadMoreButton = true;
+        }
+      );
   }
 
-  getFormattedColors(colorData: ColorGroup[][]) {
-    const currentDate = new Date();
-
-    const formattedColors = colorData.map((colorGroupArray) => {
-      return colorGroupArray.map((colorGroup) => {
-        const formattedDate = this.getMonthsDifference(
-          colorGroup._id,
-          currentDate
-        );
-        return {
-          name: colorGroup.name,
-          code: colorGroup.code,
-          formattedDate: formattedDate,
-        };
-      });
-    });
-    return formattedColors;
-  }
-
-  getMonthsDifference(objectId: string, currentDate: Date): string {
-    const timestamp = parseInt(objectId.substring(0, 8), 16) * 1000;
-
-    const inputDate = new Date(timestamp);
-
-    const timeDifference = currentDate.getTime() - inputDate.getTime();
-    const millisecondsInMonth = 1000 * 60 * 60 * 24 * 30.44;
-    const monthsDifference = Math.floor(timeDifference / millisecondsInMonth);
-
-    if (monthsDifference === 1) {
-      return '1 month';
-    } else {
-      return `${monthsDifference} months`;
+  chunkedData(colorData: ColorGroup[]) {
+    const chunk = [];
+    for (let index = 0; index < colorData.length; index += 4) {
+      chunk.push(colorData.slice(index, index + 4));
     }
+    console.log(chunk);
+    return chunk;
+  }
+
+  getFormattedColors(colorData: ColorGroup[]) {
+    return this.chunkedData(colorData);
   }
 
   loadColorData() {
     const start = this.colors.length;
     const end = start + this.pageSize;
-    this.colors = [...this.colors, ...this.colorData.slice(start, end)];
-    if (this.colors.length === this.colorData.length) {
+    const remainingPalettes = this.colorData.length - this.colors.length;
+
+    if (remainingPalettes > this.pageSize) {
+      this.colors = [...this.colors, ...this.colorData.slice(start, end)];
+    } else {
+      this.colors = [...this.colors, ...this.colorData.slice(start)];
       this.hideLoadButton = true;
     }
   }
