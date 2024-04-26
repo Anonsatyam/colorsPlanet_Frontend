@@ -3,14 +3,9 @@ import { ColorPaletteService } from './color-palette.service';
 import { ColorGroup } from './color-data.interface';
 import { ClipboardService } from 'ngx-clipboard';
 import { SharedService } from '../shared-services/shared.service';
-import { Subscription, Subject } from 'rxjs';
+import { Subscription, Subject, of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import ObjectId from 'bson-objectid';
-import { from, Observable, of } from 'rxjs';
 import {
-  map,
-  mergeMap,
-  toArray,
   takeUntil,
   catchError,
   finalize,
@@ -54,11 +49,9 @@ export class ColorPaletteComponent implements OnInit {
           if (this.dataFromSearch.trim() === '') {
             this.searchResults = [];
           } else {
-            console.log(this.colors);
-
             this.searchResults = this.colors.filter(
-              (colorGroup) =>
-                colorGroup.name.toLowerCase() ===
+              (color) =>
+                color.name.toLowerCase() ===
                 this.dataFromSearch.toLowerCase()
             );
           }
@@ -115,7 +108,6 @@ export class ColorPaletteComponent implements OnInit {
     for (let index = 0; index < colorData.length; index += 4) {
       chunk.push(colorData.slice(index, index + 4));
     }
-    console.log(chunk);
     return chunk;
   }
 
