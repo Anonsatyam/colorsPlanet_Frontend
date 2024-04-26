@@ -3,11 +3,11 @@ import { ColorPaletteService } from './color-palette.service';
 import { ColorGroup } from './color-data.interface';
 import { ClipboardService } from 'ngx-clipboard';
 import { SharedService } from '../shared-services/shared.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import ObjectId from 'bson-objectid';
 import { from, Observable, of } from 'rxjs';
-import { map, mergeMap, toArray } from 'rxjs/operators';
+import { map, mergeMap, toArray, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-color-palette',
@@ -28,6 +28,7 @@ export class ColorPaletteComponent implements OnInit {
     'Pretty Good Choice',
   ];
   private subscription: Subscription;
+  private readonly destroy$ = new Subject();
   pageSize = 12;
   hideLoadButton: boolean = false;
 
@@ -37,18 +38,23 @@ export class ColorPaletteComponent implements OnInit {
     private sharedService: SharedService,
     private snackBar: MatSnackBar
   ) {
-    this.subscription = this.sharedService.dataFromSearch$.subscribe((data) => {
-      this.dataFromSearch = data;
-      if (this.dataFromSearch.trim() === '') {
-        this.searchResults = [];
-      } else {
-        const index = this.colors.findIndex((colorGroup) =>
-          colorGroup.find((color: any) => color.name.toLowerCase() === this.dataFromSearch.toLowerCase())
-        );
+    this.subscription = this.sharedService.dataFromSearch$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.dataFromSearch = data;
+        if (this.dataFromSearch.trim() === '') {
+          this.searchResults = [];
+        } else {
+          const index = this.colors.findIndex((colorGroup) =>
+            colorGroup.find(
+              (color: any) =>
+                color.name.toLowerCase() === this.dataFromSearch.toLowerCase()
+            )
+          );
 
-        this.searchResults = index !== -1 ? this.colors[index] : undefined;
-      }
-    });
+          this.searchResults = index !== -1 ? this.colors[index] : undefined;
+        }
+      });
   }
 
   ngOnInit() {
@@ -57,14 +63,15 @@ export class ColorPaletteComponent implements OnInit {
 
   fetchColorPalletes() {
     this.loadingData = true;
-    this.service.getData().subscribe((data) => {
-      console.log(data);
-      
-      this.colorData = data[0].colorGroups;
-      this.getFormattedColors(this.colorData);
-      this.loadColorData();
-      this.loadingData = false;
-    });
+    this.service
+      .getData()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.colorData = data[0].colorGroups;
+        this.getFormattedColors(this.colorData);
+        this.loadColorData();
+        this.loadingData = false;
+      });
   }
 
   getFormattedColors(colorData: ColorGroup[][]) {
@@ -72,7 +79,10 @@ export class ColorPaletteComponent implements OnInit {
 
     const formattedColors = colorData.map((colorGroupArray) => {
       return colorGroupArray.map((colorGroup) => {
-        const formattedDate = this.getMonthsDifference(colorGroup._id,currentDate);
+        const formattedDate = this.getMonthsDifference(
+          colorGroup._id,
+          currentDate
+        );
         return {
           name: colorGroup.name,
           code: colorGroup.code,
@@ -82,8 +92,6 @@ export class ColorPaletteComponent implements OnInit {
     });
     return formattedColors;
   }
-
-
 
   getMonthsDifference(objectId: string, currentDate: Date): string {
     const timestamp = parseInt(objectId.substring(0, 8), 16) * 1000;
@@ -121,5 +129,10 @@ export class ColorPaletteComponent implements OnInit {
       verticalPosition: 'top',
       panelClass: ['green-snackbar'],
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 }
