@@ -1,40 +1,4 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;500&display=swap"); */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 65px;
-  background-color: var(--body-color);
-}
-
-.mainContainer {
-  max-width: 100% !important;
-  justify-content: center;
-}
-
-.heading-for-palettes {
-  width: 100%;
-  line-height: 40px;
-  letter-spacing: -0.114286px;
-  margin: 40px 0 20px 0;
-  font-weight: 500;
-  color: var(--text-color);
-  padding: 12px 60px;
-}
-
-.heading-for-palettes h1 {
-  font-family: "Poppins SemiBold";
-  font-weight: 700;
-  font-size: 26px;
-}
-
-.heading-for-palettes h2 {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 16px;
-  color: #959595;
-  font-family: "Noto Sans", sans-serif;
-}
-
 .colorColumn {
   color: #ffffff;
   font-weight: 500;
@@ -56,27 +20,6 @@
   animation-iteration-count: 0.5s;
   animation-timing-function: linear;
   transform-origin: 50% 100%;
-}
-
-@keyframes shake {
-  0% {
-    transform: translate(2px, 1px) rotate(0deg);
-  }
-  10% {
-    transform: translate(-1px, -2px) rotate(-2deg);
-  }
-  20% {
-    transform: translate(-3px, 0px) rotate(3deg);
-  }
-  30% {
-    transform: translate(0px, 2px) rotate(0deg);
-  }
-  40% {
-    transform: translate(1px, -1px) rotate(1deg);
-  }
-  50% {
-    transform: translate(0, 0) rotate(0);
-  }
 }
 
 #main div:nth-child(1) {
@@ -138,35 +81,6 @@
 }
 
 .loadMore {
-  height: 25px;
-  width: 25px;
-  margin-left: 5px;
-}
-
-.button-container button {
-  border: none !important;
-  background: transparent;
-  margin: 10px 5px;
-}
-
-.edit,
-.delete {
-  height: 25px;
-  width: 25px;
-  cursor: not-allowed;
-}
-
-.blue-snackbar {
-  background: #2196f3;
-}
-.green-snackbar {
-  background: #1de9b6;
-}
-.red-snackbar {
-  background: #b00020;
-}
-
-.loadMore {
   width: 132px !important;
   height: 40px;
   background-color: var(--primary-color);
@@ -175,15 +89,6 @@
 .loadMore img {
   height: 25px !important;
   width: 25px !important;
-}
-
-.formattedDate {
-  text-align: center;
-  margin: 10px auto;
-  font-weight: 500;
-  font-size: 13px;
-  color: #959595;
-  font-family: Noto Sans, sans-serif;
 }
 
 @media only screen and (max-width: 600px) {
@@ -198,10 +103,6 @@
   .heading-for-palettes h2 {
     font-size: 10px;
   }
-
-  /* .loadMore {
-    margin-bottom: 20px;
-  } */
 
   .noTopMargin {
     margin-top: 0 !important;

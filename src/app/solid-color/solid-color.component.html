@@ -8,7 +8,7 @@
     <h1 class="text-center dataIsLoading">Data is loading...</h1>
 </div>
 
-<div class="container solid_container justify-content-center" *ngIf="!dataFromSearch; else searchedData">
+<div class="container mainContainer" *ngIf="!dataFromSearch; else searchedData">
     <div class="row heading-for-palettes" *ngIf="!loadingData && colorsData.length > 0">
         <h1>Explore Captivating Color Combinations for Solid Colors.</h1>
         <h2> Unveil the Essence of Color Harmony.</h2>
@@ -33,25 +33,23 @@
     </div>
 </div>
 
-<div class="container justify-content-center">
-    <div class="row buttonRow" *ngIf="!hideLoadButton && !dataFromSearch && !loadingData">
-        <button class="genericButton loadMore" (click)="loadColorData()">
-            Load More
-            <!-- <img class="loadMore_img" src="../../assets/homepage/load_more.png" alt="loadMore"> -->
-        </button>
-    </div>
+<div class="row buttonRow" *ngIf="!hideLoadButton && !dataFromSearch && !loadingData">
+    <button class="genericButton loadMore" (click)="loadColorData()">
+        Load More
+        <img class="loadMore_img" src="../../assets/homepage/load_more.png" alt="loadMore">
+    </button>
 </div>
 
 
 <ng-template #searchedData>
-    <div class="container solid_container">
+    <div class="container" *ngIf="searchResults.length">
         <div class="row mainRow">
-            <div id="main" class="justify-content-center">
-                <div class="col-3 colorColumn" [style.backgroundColor]="color.value" *ngFor="let color of searchResults"
-                    (click)="copyColorCode(color.value)">
-                    <p>Click To Copy✌️</p>
-                </div>
+            <!-- <div id="main" class="justify-content-center"> -->
+            <div class="col-3 colorColumn" [style.backgroundColor]="color.value" *ngFor="let color of searchResults"
+                (click)="copyColorCode(color.value)">
+                <p>Click To Copy✌️</p>
             </div>
+            <!-- </div> -->
         </div>
     </div>
     <div class="noColorFound" *ngIf="searchResults.length <= 0">

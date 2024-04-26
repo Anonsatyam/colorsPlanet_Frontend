@@ -1,34 +1,3 @@
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.solid_container {
-  margin-top: 100px;
-}
-
-.heading-for-palettes {
-  width: 100%;
-  font-size: 30px;
-  line-height: 40px;
-  letter-spacing: -0.114286px;
-  padding: 7.5px;
-  color: #0d1117;
-  margin: 40px 0 20px 0;
-}
-
-.heading-for-palettes h1 {
-  font-family: "Noto Sans", sans-serif;
-  font-weight: 600;
-}
-
-.heading-for-palettes h2 {
-  font-weight: 700;
-  font-size: 13px;
-  line-height: 16px;
-  color: #959595;
-  font-family: "Noto Sans", sans-serif;
-}
 
 .colorColumn {
   color: #ffffff;
@@ -46,11 +15,6 @@
   margin: 15px;
 }
 
-#main {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 #main div:hover {
   animation-name: shake;
   animation-duration: 0.8s;
@@ -66,27 +30,6 @@
   border-radius: 12px;
 }
 
-@keyframes shake {
-  0% {
-    transform: translate(2px, 1px) rotate(0deg);
-  }
-  10% {
-    transform: translate(-1px, -2px) rotate(-2deg);
-  }
-  20% {
-    transform: translate(-3px, 0px) rotate(3deg);
-  }
-  30% {
-    transform: translate(0px, 2px) rotate(0deg);
-  }
-  40% {
-    transform: translate(1px, -1px) rotate(1deg);
-  }
-  50% {
-    transform: translate(0, 0) rotate(0);
-  }
-}
-
 .colorColumn p {
   display: none;
 }
@@ -96,17 +39,22 @@
   transition: 0.3s;
   display: flex;
 }
-.buttonRow .loadMore {
-  margin: 0 auto !important;
-  width: 132px !important;
-  height: 40px !important;
-  margin-bottom: 10px !important;
+
+.buttonRow {
+  margin: 0px auto 10px auto;
+  background-color: var(--body-color);
+  justify-content: center;
 }
 
-.loadMore_img {
-  height: 25px;
-  width: 25px;
-  /* margin-left: 5px; */
+.loadMore {
+  width: 132px !important;
+  height: 40px;
+  background-color: var(--primary-color);
+}
+
+.loadMore img {
+  height: 25px !important;
+  width: 25px !important;
 }
 
 @media only screen and (max-width: 600px) {
