@@ -15,10 +15,12 @@ import { map, mergeMap, toArray, takeUntil } from 'rxjs/operators';
   styleUrls: ['./color-palette.component.css'],
 })
 export class ColorPaletteComponent implements OnInit {
+  private subscription: Subscription;
+  private readonly destroy$ = new Subject();
+
   colors: any[] = [];
   colorData: any[] = [];
   searchResults: any[] = [];
-
   loadingData: boolean;
   dataFromSearch: any = '';
   randomMessages = [
@@ -27,8 +29,6 @@ export class ColorPaletteComponent implements OnInit {
     'Fall In Love With This Color',
     'Pretty Good Choice',
   ];
-  private subscription: Subscription;
-  private readonly destroy$ = new Subject();
   pageSize = 12;
   hideLoadButton: boolean = false;
 
