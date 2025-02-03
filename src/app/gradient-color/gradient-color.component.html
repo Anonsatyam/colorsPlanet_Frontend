@@ -8,7 +8,7 @@
     <h1 class="text-center dataIsLoading">Data is loading...</h1>
 </div>
 
-<div class="gradientContainer container justify-content-center" *ngIf="!dataFromSearch; else searchedData">
+<div class="container mainContainer" *ngIf="!dataFromSearch; else searchedData">
 
     <div class="row heading-for-palettes" *ngIf="!loadingData && colors.length > 0">
         <h1>Discover Mesmerizing Gradient Color Combinations.</h1>

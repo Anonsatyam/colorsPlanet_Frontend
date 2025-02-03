@@ -1,0 +1,106 @@
+/* Main container for the entire layout */
+.mainContainer {
+    padding: 20px;
+    max-width: 100%;
+    margin: auto;
+    background-color: #f0f4ff;
+}
+
+/* Grid container for brand items */
+.brand-container {
+    display: grid; /* Use CSS Grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between grid items */
+    margin-top: 20px;
+}
+
+/* Each brand item (palette container) */
+.brand-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for brand items */
+.brand-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Inner content for each brand item */
+.brand-item-content {
+    margin-bottom: 20px; /* Space between multiple brand-item-content sections */
+}
+
+/* Brand name (h3) styling */
+.brand-item-content h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Flex container for color circles */
+.color-grid {
+    display: flex; /* Use Flexbox for circles */
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    gap: 10px; /* Space between circles */
+    justify-content: center; /* Center align the circles */
+    margin-top: 10px;
+}
+
+/* Container for individual color circle */
+.color-circle-container {
+    width: 50px; /* Fixed size of the square */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for each color circle */
+.color-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+/* Hover effect for scaling the circle */
+.color-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Loading animation */
+.loadingData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 50px;
+}
+
+.dataIsLoading {
+    font-size: 18px;
+    font-weight: bold;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.mainRow {
+    margin: 20px;
+    background: #fff;
+    box-shadow: 0 6px 26px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+  }
+
+  .diff{
+}
+  

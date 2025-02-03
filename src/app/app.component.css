@@ -14,7 +14,7 @@
     left: 60px;
     width: calc(100% - 60px);
     transition: left 200ms ease-in, width 200ms ease-in;
-    background-color: var(--body-color);
+    background-color: var(--body-color) !important;
     height: 100vh;
   }
 

@@ -7,6 +7,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { SolidColorComponent } from './solid-color/solid-color.component';
 import { GradientColorComponent } from './gradient-color/gradient-color.component';
+import { BrandColorComponent } from './brand-color/brand-color.component';
 
 const routes: Routes = [
   { path: '', component: ColorPaletteComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'solidColors', component: SolidColorComponent },
   { path: 'gradientColors', component: GradientColorComponent },
+  { path: 'brandColors', component: BrandColorComponent }
 ];
 
 @NgModule({

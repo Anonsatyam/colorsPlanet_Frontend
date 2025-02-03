@@ -65,19 +65,15 @@
 }
 
 .buttonRow {
-  margin: 20px auto;
+  margin: 0px auto 10px auto;
+  background-color: var(--body-color);
   justify-content: center;
-}
-
-.loadMore {
-  height: 25px;
-  width: 25px;
-  margin-left: 5px;
 }
 
 .loadMore {
   width: 132px !important;
   height: 40px;
+  background-color: var(--primary-color);
 }
 
 .loadMore img {

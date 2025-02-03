@@ -17,6 +17,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { SolidColorComponent } from './solid-color/solid-color.component';
 import { GradientColorComponent } from './gradient-color/gradient-color.component';
+import { BrandColorComponent } from './brand-color/brand-color.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
     RegistrationComponent,
     LoginComponent,
     SolidColorComponent,
-    GradientColorComponent
+    GradientColorComponent,
+    BrandColorComponent
   ],
   imports: [
     BrowserModule,

@@ -15,9 +15,9 @@
             <span><a>Gradients</a></span>
         </li>
 
-        <li class="nav-list-item" style="color: #ffffff;">
+        <li class="nav-list-item" style="color: #ffffff;" [routerLink]="'brandColors'">
             <img class="sidenavIcons" src="../../assets/sidenavIcons/brand.png" alt="">
-            <span><a href="#">Brand Colors</a></span>
+            <span><a>Brand Colors</a></span>
         </li>
 
         <li  *ngIf="menuStatus" class="nav-list-item close" style="color: #ffffff;" (click)="sidenavToggle()">

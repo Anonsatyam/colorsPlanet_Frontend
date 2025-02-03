@@ -4,7 +4,7 @@
             <img class="logo" src="../../assets/logo/logo.png"  alt="">
         </div>
         <div class="col justify-content-end">
-            <form [formGroup]="SignupForm">
+            <form [formGroup]="TopnavForm">
                 <div class="form-group d-flex align-items-center">
                     <input type="search" class="form-control" id="username" (input)="onSearch($event)" 
                     placeholder="Type color name/hex..."
@@ -17,10 +17,10 @@
                 <span>Login</span>
                 <img class="login" src="../../assets/topnavicons/login.png" alt="login">
             </button> -->
-            <button *ngIf="data" class="adminAreaButton" [routerLink]="'/adminPanel'">
+            <!-- <button *ngIf="data" class="adminAreaButton" [routerLink]="'/adminPanel'">
                 <span>Admin</span>
                 <img class="admin" src="../../assets/topnavicons/admin.png" alt="admin">
-            </button>
+            </button> -->
         </div>
     </div>
 </div>

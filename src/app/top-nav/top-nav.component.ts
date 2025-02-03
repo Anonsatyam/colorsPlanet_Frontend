@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-nav.component.css'],
 })
 export class TopNavComponent implements OnInit {
-  SignupForm: FormGroup;
+  TopnavForm: FormGroup;
   searchResults: any[] = [];
   data: any;
   constructor(private sharedService: SharedService, private router: Router) {}
 
   ngOnInit() {
-    this.SignupForm = new FormGroup({
+    this.TopnavForm = new FormGroup({
       username: new FormControl(null, [Validators.required]),
     });
 
@@ -25,7 +25,7 @@ export class TopNavComponent implements OnInit {
   }
 
   onSearch(event: any) {
-    this.sharedService.setData(this.SignupForm.value.username);
+    this.sharedService.setData(this.TopnavForm.value.username);
   }
 
   clearSearch() {
