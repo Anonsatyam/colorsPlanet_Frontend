@@ -5,6 +5,6 @@ export interface BrandColor {
 
 export interface BrandColorPalette {
   _id: string;
-  brandColors: BrandColor[];
+  brandColors: BrandColor[]; // Array of BrandColor
   __v: number;
 }

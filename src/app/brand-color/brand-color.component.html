@@ -1,4 +1,3 @@
-<!-- Loading State -->
 <div *ngIf="loadingData">
     <div class="loadingData">
         <div class="dash one"></div>
@@ -9,51 +8,65 @@
     <h1 class="text-center dataIsLoading">Data is loading...</h1>
 </div>
 
-<!-- Main Container (When no data is searched) -->
 <div class="container mainContainer" *ngIf="!dataFromSearch; else searchedData">
     <div class="heading-for-palettes" *ngIf="!loadingData && brandColors.length > 0">
         <h1>Exquisite and Inspiring Color Palettes of the Moment.</h1>
         <h2>Instantly access thousands of stunning color palettes with just one click.</h2>
     </div>
 
-    <!-- <div class="brand-container"> -->
-    <!-- Outer loop for brand palettes -->
-    <!-- <div class="container-fluid"> -->
-        <div>
-            <div class="row" *ngFor="let palette of brandColors" style="padding: 20px; margin: 20px;">
-                <div *ngFor="let brand of palette.brandColors" class="col-3" style="background: rgb(216, 221, 234);
-    box-shadow: 0 6px 26px rgba(0, 0, 0, 0.08); margin: 10px; width: 280px; padding: 10px; border-radius: 5px;">
+    <div>
+        <div *ngFor="let palette of brandColorPalettes">
+            <div class="row" style=" margin: 20px;">
+
+                <div *ngFor="let brand of palette.brandColors" class="col-3"
+                    style="
+            box-shadow: 0 6px 26px rgba(0, 0, 0, 0.08); margin: 10px; width: 280px; padding: 10px; border-radius: 5px;">
+
                     <h3 style="text-align: center;">{{ brand.name }}</h3>
+
                     <div class="color-grid">
-                        <!-- Loop through colors to display color circles -->
                         <div *ngFor="let color of brand.colors" class="color-circle-container">
-                            <div class="color-circle" [style.background]="color" [attr.data-color]="color"></div>
+                            <div class="color-circle colorColumn" [style.background]="color"
+                                (click)="copyColorCode(color)" [attr.data-color]="color">
+                                <img src="../../assets/clickToCopy/left-click.png" alt="Click To Copy">
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-
         </div>
-    <!-- </div> -->
 
-    <!-- </div> -->
+
+
+    </div>
+
 </div>
 
-<!-- Searched Data Template -->
+<!-- <div class="row buttonRow" *ngIf="!hideLoadButton && !dataFromSearch && !loadingData">
+    <button class="genericButton loadMore" (click)="loadColorData()">
+        Load More
+        <img class="loadMore_img" src="../../assets/homepage/load_more.png" alt="loadMore">
+    </button>
+</div> -->
+
 <ng-template #searchedData>
     <div class="container" *ngIf="searchResults.length">
-        <div class="row mainRow">
-            <div class="col-3 colorColumn" [style.backgroundColor]="colorGroup.name"
-                *ngFor="let colorGroup of searchResults">
-                <div (click)="copyColorCode(colorGroup.name)">
-                    <p>Click To Copy😊</p>
+        <div class="row" style="padding: 20px;">
+            <div class="col-3" *ngFor="let brand of searchResults"
+                style="display: inline;box-shadow: 0 6px 26px rgba(0, 0, 0, 0.08); margin: 5px;">
+                <h3 style="text-align: center;">{{ brand.name }}</h3>
+                <div class="color-grid">
+                    <div *ngFor="let color of brand.colors" class="color-circle-container">
+                        <div class="color-circle colorColumn" [style.background]="color" (click)="copyColorCode(color)"
+                            [attr.data-color]="color"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- No results found -->
-    <div class="noColorFound" *ngIf="searchResults.length <= 0">
+    <div class="noColorFound" *ngIf="searchResults.length === 0">
         <img src="../../assets/logo/oops.png" alt="Oops" />
         <h1>No color match for your search.</h1>
     </div>

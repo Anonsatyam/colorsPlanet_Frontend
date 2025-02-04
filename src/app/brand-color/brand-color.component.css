@@ -54,14 +54,15 @@
 
 /* Container for individual color circle */
 .color-circle-container {
-    width: 50px; /* Fixed size of the square */
-    height: 50px;
+    width: 70px; /* Fixed size of the square */
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 /* Style for each color circle */
@@ -101,6 +102,27 @@
     border-radius: 12px;
   }
 
-  .diff{
-}
+  .color-circle {
+    position: relative; /* Make the div a positioned container */
+    width: 50px; /* Define circle size */
+    height: 50px;
+    border-radius: 50%; /* Circle shape */
+    overflow: hidden; /* Ensures the image stays inside the circle */
+  }
+  
+  .colorColumn img {
+    display: none;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+  }
+  
+  .colorColumn:hover img {
+    display: block;
+  }
+  
   

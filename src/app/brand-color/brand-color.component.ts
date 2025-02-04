@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BrandColorService } from './brand-color.service';
-import { BrandColorPalette } from './brand-color';
+import { BrandColorPalette, BrandColor } from './brand-color';
 import { SharedService } from '../shared-services/shared.service';
 import { Subscription, Subject, of } from 'rxjs';
 import { takeUntil, catchError, finalize } from 'rxjs/operators';
@@ -15,6 +15,8 @@ import { ClipboardService } from 'ngx-clipboard';
 export class BrandColorComponent implements OnInit {
   private subscription: Subscription;
   private readonly destroy$ = new Subject();
+  brandColorPalettes: BrandColorPalette[] = [];
+  brandColors: BrandColor[] = [];
 
   colors: any[] = [];
   colorData: any[] = [];
@@ -26,11 +28,11 @@ export class BrandColorComponent implements OnInit {
     'Fall In Love With This Color',
     'Pretty Good Choice',
   ];
-  pageSize = 0;
+  pageSize = 12;
+
   hideLoadButton: boolean = false;
   hideLoadMoreButton: boolean = false;
   loadingData: boolean;
-  brandColors: BrandColorPalette[] = [];
   constructor(
     private brandService: BrandColorService,
     private clipboardService: ClipboardService,
@@ -41,15 +43,15 @@ export class BrandColorComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(
         (data) => {
-          this.dataFromSearch = data;
-          if (this.dataFromSearch.trim() === '') {
+          this.dataFromSearch = data.trim().toLowerCase();
+          if (this.dataFromSearch === '') {
             this.searchResults = [];
           } else {
-            this.searchResults = this.colors.filter(
-              (color) =>
-                color.name.toLowerCase() === this.dataFromSearch.toLowerCase()
+            this.searchResults = this.brandColors.filter((brand) =>
+              brand.name.toLowerCase().includes(this.dataFromSearch)
             );
           }
+
         },
         (error) => {
           this.snackBar.open(error.message, 'Ok', {
@@ -63,23 +65,42 @@ export class BrandColorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBrandColors();
+    console.log(this.brandColorPalettes.length);
+    
   }
 
   getBrandColors() {
     this.loadingData = true;
-    this.brandService.getbrandColorData().subscribe((data) => {
-      this.brandColors = data;
-      console.log(this.brandColors);
-    });
-    this.loadingData = false
+    this.brandService
+      .getbrandColorData()
+      .subscribe((data: BrandColorPalette[]) => {
+        console.log('API Response:', data);
+
+        if (data.length > 0) {
+          this.brandColorPalettes = data;
+          this.brandColors = data.flatMap((item) => item.brandColors);
+        } else {
+          this.brandColorPalettes = [];
+          this.brandColors = [];
+        }
+        this.loadColorData();
+        this.loadingData = false;
+      });
+  }
+
+  loadColorData() {
+    const start = this.colors.length;
+    const end = start + this.pageSize;
+    this.colors = [...this.colors, ...this.brandColors.slice(start, end)];
+    if (this.colors.length === this.brandColors.length) {
+      this.hideLoadButton = true;
+    }
   }
 
   copyColorCode(colorCode: string): void {
     this.clipboardService.copyFromContent(colorCode);
-
     const randomNumber = Math.floor(Math.random() * this.randomMessages.length);
     const randomMessage = this.randomMessages[randomNumber];
-
     this.snackBar.open(randomMessage, 'Ok', {
       duration: 1000,
       verticalPosition: 'top',
